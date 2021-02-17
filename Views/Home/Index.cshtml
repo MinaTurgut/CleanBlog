@@ -1,0 +1,36 @@
+﻿@model HomePostList
+
+@section Scripts {
+    <script src="~/js/script.js"></script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="post-preview">
+                    <a href="post.html">
+                        <h2 class="post-title">
+                            @post.Title
+                        </h2>
+                        <h3 class="post-subtitle">
+                            @(post.Description.Length >= 20 ? post.Description.Substring(0,20): post.Description))
+
+                        </h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#">@post.AuthorName + " " + @post.AuthorSurname</a>
+                        on @post.WritePost.ToString("MMMM dd, yyyy")
+                    </p>
+                </div>
+                <hr>
+            }
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
